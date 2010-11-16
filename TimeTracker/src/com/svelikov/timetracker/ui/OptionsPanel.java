@@ -3,25 +3,28 @@ package com.svelikov.timetracker.ui;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
-import java.util.ResourceBundle;
 
 import javax.swing.JButton;
-import javax.swing.JPanel;
 
 import com.svelikov.timetracker.ActionCommandConstants;
 import com.svelikov.timetracker.LabelNameConstants;
 
 /**
+ * Options panel.
+ * 
  * @author svelikov
  */
-public class OptionsPanel extends JPanel {
+public class OptionsPanel extends TimeTrackerExtendedPanel {
 
 	/**
 	 * Button that is used to add/create a new TimeTracker.
 	 */
 	private JButton createTimeTracker;
 
-	public OptionsPanel(ResourceBundle bundle) {
+	/**
+	 * Constructor that creates this component.
+	 */
+	public OptionsPanel() {
 		setLayout(null);
 		setSize(new Dimension(600, 34));
 
@@ -31,13 +34,21 @@ public class OptionsPanel extends JPanel {
 		createTimeTracker.setToolTipText("Create a new time tracker");
 		add(createTimeTracker);
 
-		Insets insets = getInsets();
-		Dimension size = createTimeTracker.getPreferredSize();
+		final Insets insets = getInsets();
+		final Dimension size = createTimeTracker.getPreferredSize();
 		createTimeTracker.setBounds(480 + insets.left, 4 + insets.top,
 				size.width + 10, size.height);
+
+		log.info("Create options panel.");
 	}
 
-	public void setActionListener(ActionListener listener) {
+	/**
+	 * Sets a action listener to createTimeTracker button.
+	 * 
+	 * @param listener
+	 *            The listener to be set for the button.
+	 */
+	public void setActionListener(final ActionListener listener) {
 		createTimeTracker.addActionListener(listener);
 	}
 }
