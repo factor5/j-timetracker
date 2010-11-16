@@ -23,15 +23,15 @@ public class NewTimeTrackerInfoActionListener extends WindowAdapter implements
 	private final JFrame mainWindow;
 
 	public NewTimeTrackerInfoActionListener(
-			NewTimeTrackerInfoWindow newTimeTrackerInfoWindow,
-			TimeTrackerTableModel tableModel, JFrame mainWindow) {
+			final NewTimeTrackerInfoWindow newTimeTrackerInfoWindow,
+			final TimeTrackerTableModel tableModel, final JFrame mainWindow) {
 		this.newTimeTrackerInfoWindow = newTimeTrackerInfoWindow;
 		this.tableModel = tableModel;
 		this.mainWindow = mainWindow;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent ae) {
+	public void actionPerformed(final ActionEvent ae) {
 		if (ae.getActionCommand().equals(ActionCommandConstants.CREATE_TIMER)) {
 			trackerName = newTimeTrackerInfoWindow.getTimeTrackerName()
 					.getText();
@@ -50,12 +50,12 @@ public class NewTimeTrackerInfoActionListener extends WindowAdapter implements
 	}
 
 	protected void createTimeTracker() {
-		Vector<Object> newRow = new Vector<Object>(3);
+		final Vector<Object> newRow = new Vector<Object>(3);
 		newRow.add(trackerName);
 		newRow.add(new Date());
 		newRow.add(UIUtil.getActionButtons());
 
-		Vector<Object> data = tableModel.getData();
+		final Vector<Object> data = tableModel.getData();
 		data.add(newRow);
 		tableModel.fireTableDataChanged();
 	}
@@ -70,11 +70,11 @@ public class NewTimeTrackerInfoActionListener extends WindowAdapter implements
 	 * @return true if the specified name already exists in the table and false
 	 *         otherwise.
 	 */
-	private boolean nameAlreadyExists(TimeTrackerTableModel tableModel,
-			String timerName) {
-		int rowsCount = tableModel.getRowCount();
+	private boolean nameAlreadyExists(final TimeTrackerTableModel tableModel,
+			final String timerName) {
+		final int rowsCount = tableModel.getRowCount();
 		for (int i = 0; i < rowsCount; i++) {
-			String n = (String) tableModel.getValueAt(i, 0);
+			final String n = (String) tableModel.getValueAt(i, 0);
 			if (n.equals(timerName)) {
 				return true;
 			}
