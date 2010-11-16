@@ -10,7 +10,7 @@ import com.svelikov.timetracker.LabelNameConstants;
 /**
  * Custom table model.
  * 
- * @author Factor5
+ * @author svelikov
  * 
  */
 public class TimeTrackerTableModel extends AbstractTableModel {
@@ -40,6 +40,7 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 		// row.add(UIUtil.getActionButtons());
 		//
 		// data.add(row);
+
 	}
 
 	public int getColumnCount() {
