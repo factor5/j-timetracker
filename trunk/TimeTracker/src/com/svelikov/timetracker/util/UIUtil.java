@@ -13,6 +13,8 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
+import com.svelikov.timetracker.ActionCommandConstants;
+import com.svelikov.timetracker.action.TimeTrackerAction;
 import com.svelikov.timetracker.exception.UIInitializationException;
 
 /**
@@ -38,12 +40,27 @@ public class UIUtil {
 	public static JPanel getActionButtons() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(1, 3));
-		JButton stop = new JButton("stop");
-		JButton start = new JButton("start");
-		JButton remove = new JButton("remove");
-		panel.add(stop);
-		panel.add(start);
-		panel.add(remove);
+
+		TimeTrackerAction actionListener = new TimeTrackerAction();
+
+		JButton stopTimerActionButton = new JButton("stop");
+		stopTimerActionButton
+				.setActionCommand(ActionCommandConstants.STOP_TIMER);
+		panel.add(stopTimerActionButton);
+		stopTimerActionButton.addActionListener(actionListener);
+
+		JButton startTimerActionButton = new JButton("start");
+		startTimerActionButton
+				.setActionCommand(ActionCommandConstants.START_TIMER);
+		panel.add(startTimerActionButton);
+		startTimerActionButton.addActionListener(actionListener);
+
+		JButton removeTimerActionButton = new JButton("remove");
+		removeTimerActionButton
+				.setActionCommand(ActionCommandConstants.REMOVE_TIMER);
+		panel.add(removeTimerActionButton);
+		removeTimerActionButton.addActionListener(actionListener);
+
 		return panel;
 	}
 
