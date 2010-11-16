@@ -38,7 +38,8 @@ public class NewTimeTrackerInfoActionListener extends WindowAdapter implements
 			if (!nameAlreadyExists(tableModel, trackerName)) {
 				createTimeTracker();
 			} else {
-				UIUtil.setWarnings(mainWindow, "Name already exists!",
+				UIUtil.setWarnings(mainWindow,
+						"The chosen name already exists!",
 						MessageType.INFORMATION);
 			}
 			newTimeTrackerInfoWindow.closeInfoWindow();

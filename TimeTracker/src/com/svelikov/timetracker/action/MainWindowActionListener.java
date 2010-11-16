@@ -10,13 +10,13 @@ import com.svelikov.timetracker.ActionCommandConstants;
 import com.svelikov.timetracker.ui.NewTimeTrackerInfoWindow;
 import com.svelikov.timetracker.ui.TimeTrackerTableModel;
 
-public class TimeTrackerActionListener extends WindowAdapter implements
+public class MainWindowActionListener extends WindowAdapter implements
 		ActionListener {
 
 	private final TimeTrackerTableModel tableModel;
 	private final JFrame mainWindow;
 
-	public TimeTrackerActionListener(TimeTrackerTableModel tableModel,
+	public MainWindowActionListener(TimeTrackerTableModel tableModel,
 			JFrame frame) {
 		this.tableModel = tableModel;
 		this.mainWindow = frame;
