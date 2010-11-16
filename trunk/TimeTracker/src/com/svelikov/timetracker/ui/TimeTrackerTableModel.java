@@ -7,6 +7,12 @@ import javax.swing.table.AbstractTableModel;
 
 import com.svelikov.timetracker.LabelNameConstants;
 
+/**
+ * Custom table model.
+ * 
+ * @author Factor5
+ * 
+ */
 public class TimeTrackerTableModel extends AbstractTableModel {
 
 	private final ResourceBundle bundle = ResourceBundle.getBundle("labels");
@@ -15,9 +21,9 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 
 	private final Vector<Object> data;
 
-	// private final Object[][] data = { { "test timer", "60",
-	// getActionButtons() } };
-
+	/**
+	 * Constructor that creates this table model.
+	 */
 	public TimeTrackerTableModel() {
 		// create the column names list
 		columnNames = new Vector<String>(3);
@@ -45,29 +51,30 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public String getColumnName(int col) {
+	public String getColumnName(final int col) {
 		return columnNames.get(col);
 	}
 
-	public Object getValueAt(int row, int col) {
+	public Object getValueAt(final int row, final int col) {
 		return ((Vector<?>) data.get(row)).get(col);
 	}
 
 	@Override
-	public Class getColumnClass(int c) {
+	public Class getColumnClass(final int c) {
 		return getValueAt(0, c).getClass();
 	}
 
 	@Override
-	public boolean isCellEditable(int row, int col) {
+	public boolean isCellEditable(final int row, final int col) {
 		// Note that the data/cell address is constant,
 		// no matter where the cell appears onscreen.
 		return false;
 	}
 
 	@Override
-	public void setValueAt(Object value, int rowIndex, int colIndex) {
-		Vector<Object> row = (Vector<Object>) data.get(rowIndex);
+	public void setValueAt(final Object value, final int rowIndex,
+			final int colIndex) {
+		final Vector<Object> row = (Vector<Object>) data.get(rowIndex);
 		row.set(colIndex, value);
 		fireTableCellUpdated(rowIndex, colIndex);
 	}
