@@ -50,10 +50,7 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 	}
 
 	public Object getValueAt(int row, int col) {
-		Vector<Object> aRow = (Vector<Object>) data.get(row);
-		Object value = aRow.get(col);
-		return value;
-		// return ((Vector) data.get(row)).get(col);
+		return ((Vector<?>) data.get(row)).get(col);
 	}
 
 	@Override

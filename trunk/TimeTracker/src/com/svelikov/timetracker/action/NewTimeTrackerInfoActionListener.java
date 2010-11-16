@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import com.svelikov.timetracker.ActionCommandConstants;
 import com.svelikov.timetracker.ui.NewTimeTrackerInfoWindow;
 import com.svelikov.timetracker.ui.TimeTrackerTableModel;
+import com.svelikov.timetracker.util.MessageType;
 import com.svelikov.timetracker.util.UIUtil;
 
 public class NewTimeTrackerInfoActionListener extends WindowAdapter implements
@@ -37,8 +38,8 @@ public class NewTimeTrackerInfoActionListener extends WindowAdapter implements
 			if (!nameAlreadyExists(tableModel, trackerName)) {
 				createTimeTracker();
 			} else {
-				// TODO the exists so should display message to notify for that
-				System.out.println("Name already exists!");
+				UIUtil.setWarnings(mainWindow, "Name already exists!",
+						MessageType.INFORMATION);
 			}
 			newTimeTrackerInfoWindow.closeInfoWindow();
 		} else if (ae.getActionCommand().equals(
@@ -58,12 +59,22 @@ public class NewTimeTrackerInfoActionListener extends WindowAdapter implements
 		tableModel.fireTableDataChanged();
 	}
 
+	/**
+	 * Searches the table for specified name.
+	 * 
+	 * @param tableModel
+	 *            The table model.
+	 * @param timerName
+	 *            The name to search for.
+	 * @return true if the specified name already exists in the table and false
+	 *         otherwise.
+	 */
 	private boolean nameAlreadyExists(TimeTrackerTableModel tableModel,
-			String name) {
+			String timerName) {
 		int rowsCount = tableModel.getRowCount();
-		for (int i = 1; i <= rowsCount; i++) {
-			String n = (String) tableModel.getValueAt(rowsCount, 1);
-			if (tableModel.getValueAt(rowsCount, 0).equals(name)) {
+		for (int i = 0; i < rowsCount; i++) {
+			String n = (String) tableModel.getValueAt(i, 0);
+			if (n.equals(timerName)) {
 				return true;
 			}
 		}
