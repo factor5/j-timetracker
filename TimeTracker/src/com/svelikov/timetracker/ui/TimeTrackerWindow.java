@@ -34,7 +34,7 @@ public class TimeTrackerWindow extends TimeTrackerExtendedPanel {
 
 		setLayout(null);
 		setOpaque(true);
-
+		log.info("Created main window.");
 		try {
 			final TimeTrackerTableModel tableModel = new TimeTrackerTableModel();
 			final TimersListPanel timersListPanel = new TimersListPanel(
@@ -44,7 +44,7 @@ public class TimeTrackerWindow extends TimeTrackerExtendedPanel {
 			final MainWindowActionListener mainWindowActionListener = new MainWindowActionListener(
 					tableModel, frame);
 
-			final OptionsPanel optionsPanel = new OptionsPanel(bundle);
+			final OptionsPanel optionsPanel = new OptionsPanel();
 			optionsPanel.setActionListener(mainWindowActionListener);
 			add(optionsPanel);
 
