@@ -1,6 +1,8 @@
 package com.svelikov.timetracker.ui;
 
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,6 +12,10 @@ import javax.swing.JTextField;
 import com.svelikov.timetracker.ActionCommandConstants;
 import com.svelikov.timetracker.action.NewTimeTrackerInfoActionListener;
 
+/**
+ * 
+ * @author svelikov
+ */
 public class NewTimeTrackerInfoWindow extends JFrame {
 
 	private JTextField timeTrackerName;
@@ -18,25 +24,52 @@ public class NewTimeTrackerInfoWindow extends JFrame {
 	private final TimeTrackerTableModel tableModel;
 	private final JFrame mainWindow;
 
-	public NewTimeTrackerInfoWindow(TimeTrackerTableModel tableModel,
-			JFrame mainWindow) {
+	/**
+	 * Constructor.
+	 * 
+	 * @param tableModel
+	 * @param mainWindow
+	 */
+	public NewTimeTrackerInfoWindow(final TimeTrackerTableModel tableModel,
+			final JFrame mainWindow) {
 		this.tableModel = tableModel;
 		this.mainWindow = mainWindow;
 	}
 
+	/**
+	 * 
+	 */
 	public void createAndShowWindow() {
 		setTitle("New time tracker info");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(new GridLayout(2, 2, 2, 2));
 		setSize(200, 100);
 
-		NewTimeTrackerInfoActionListener actionListener = new NewTimeTrackerInfoActionListener(
+		final NewTimeTrackerInfoActionListener actionListener = new NewTimeTrackerInfoActionListener(
 				this, tableModel, mainWindow);
-		JLabel timeTrackerNameLabel = new JLabel("Time tracker name: ");
+		final JLabel timeTrackerNameLabel = new JLabel("Time tracker name: ");
 		add(timeTrackerNameLabel);
 
 		timeTrackerName = new JTextField();
 		add(timeTrackerName);
+		timeTrackerName.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(final KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyReleased(final KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyPressed(final KeyEvent ke) {
+				if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
+					System.out.println("ENTER");
+				} else if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					closeInfoWindow();
+				}
+			}
+		});
 
 		createTimerButton = new JButton("Create");
 		createTimerButton.setActionCommand(ActionCommandConstants.CREATE_TIMER);
@@ -61,6 +94,9 @@ public class NewTimeTrackerInfoWindow extends JFrame {
 		return timeTrackerName;
 	}
 
+	/**
+	 * 
+	 */
 	public void closeInfoWindow() {
 		setVisible(false);
 		dispose();
