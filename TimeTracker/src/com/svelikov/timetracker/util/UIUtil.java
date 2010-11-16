@@ -3,9 +3,11 @@
  */
 package com.svelikov.timetracker.util;
 
+import java.awt.Container;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
@@ -15,7 +17,6 @@ import com.svelikov.timetracker.exception.UIInitializationException;
 
 /**
  * @author Factor5
- * 
  */
 public class UIUtil {
 
@@ -44,6 +45,28 @@ public class UIUtil {
 		panel.add(start);
 		panel.add(remove);
 		return panel;
+	}
+
+	/**
+	 * Shows windows with messages according the parameters.
+	 * 
+	 * @param warningMessage
+	 *            The message that should be displayed.
+	 * @param msgType
+	 *            The type of the window to be shown.
+	 */
+	public static void setWarnings(Container parent, String warningMessage,
+			MessageType msgType) {
+		switch (msgType) {
+			case WARNING:
+				JOptionPane.showMessageDialog(parent, warningMessage,
+						"Warning", JOptionPane.WARNING_MESSAGE);
+				break;
+			case INFORMATION:
+				JOptionPane.showMessageDialog(parent, warningMessage,
+						"Information", JOptionPane.INFORMATION_MESSAGE);
+				break;
+		}
 	}
 
 }

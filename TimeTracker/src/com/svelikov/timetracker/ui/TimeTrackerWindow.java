@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -15,6 +14,7 @@ import com.svelikov.timetracker.ActionCommandConstants;
 import com.svelikov.timetracker.LabelNameConstants;
 import com.svelikov.timetracker.action.TimeTrackerActionListener;
 import com.svelikov.timetracker.exception.UIInitializationException;
+import com.svelikov.timetracker.util.MessageType;
 import com.svelikov.timetracker.util.UIUtil;
 
 /**
@@ -73,7 +73,9 @@ public class TimeTrackerWindow extends JPanel {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-			setWarnings("An error occured whil starting the application!", 1);
+			UIUtil.setWarnings(this,
+					"An error occured whil starting the application!",
+					MessageType.WARNING);
 		}
 	}
 
@@ -113,24 +115,4 @@ public class TimeTrackerWindow extends JPanel {
 		add(scrollPane);
 	}
 
-	/**
-	 * Shows windows with messages according the parameters.
-	 * 
-	 * @param warningMessage
-	 *            The message that should be displayed.
-	 * @param msgType
-	 *            The type of the window to be shown.
-	 */
-	public void setWarnings(String warningMessage, int msgType) {
-		switch (msgType) {
-		case 1:
-			JOptionPane.showMessageDialog(this, warningMessage, "Warning",
-					JOptionPane.WARNING_MESSAGE);
-			break;
-		case 2:
-			JOptionPane.showMessageDialog(this, warningMessage, "Information",
-					JOptionPane.INFORMATION_MESSAGE);
-			break;
-		}
-	}
 }
