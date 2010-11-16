@@ -5,19 +5,24 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.svelikov.timetracker.ui.TimeTrackerWindow;
 
+/**
+ * Runner class for this application.
+ * 
+ * @author Factor5
+ */
 public class TimeTrackerRunner {
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		try {
 			// UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-		} catch (UnsupportedLookAndFeelException ex) {
+		} catch (final UnsupportedLookAndFeelException ex) {
 			ex.printStackTrace();
-		} catch (IllegalAccessException ex) {
+		} catch (final IllegalAccessException ex) {
 			ex.printStackTrace();
-		} catch (InstantiationException ex) {
+		} catch (final InstantiationException ex) {
 			ex.printStackTrace();
-		} catch (ClassNotFoundException ex) {
+		} catch (final ClassNotFoundException ex) {
 			ex.printStackTrace();
 		}
 		/* Turn off metal's use of bold fonts */
@@ -25,7 +30,7 @@ public class TimeTrackerRunner {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				TimeTrackerWindow main = new TimeTrackerWindow();
+				final TimeTrackerWindow main = new TimeTrackerWindow();
 				main.makeMainWindow();
 			}
 		});
