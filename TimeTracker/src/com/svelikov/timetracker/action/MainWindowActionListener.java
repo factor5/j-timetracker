@@ -16,16 +16,16 @@ public class MainWindowActionListener extends WindowAdapter implements
 	private final TimeTrackerTableModel tableModel;
 	private final JFrame mainWindow;
 
-	public MainWindowActionListener(TimeTrackerTableModel tableModel,
-			JFrame frame) {
+	public MainWindowActionListener(final TimeTrackerTableModel tableModel,
+			final JFrame frame) {
 		this.tableModel = tableModel;
 		this.mainWindow = frame;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent ae) {
+	public void actionPerformed(final ActionEvent ae) {
 		if (ae.getActionCommand().equals(ActionCommandConstants.NEW_TIMER)) {
-			NewTimeTrackerInfoWindow infoWindow = new NewTimeTrackerInfoWindow(
+			final NewTimeTrackerInfoWindow infoWindow = new NewTimeTrackerInfoWindow(
 					tableModel, mainWindow);
 			infoWindow.createAndShowWindow();
 		}

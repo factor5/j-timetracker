@@ -12,7 +12,7 @@ import com.svelikov.timetracker.ActionCommandConstants;
 public class TimeTrackerAction extends WindowAdapter implements ActionListener {
 
 	@Override
-	public void actionPerformed(ActionEvent ae) {
+	public void actionPerformed(final ActionEvent ae) {
 		if (ae.getActionCommand().equals(ActionCommandConstants.START_TIMER)) {
 			System.out.println("START");
 		} else if (ae.getActionCommand().equals(
