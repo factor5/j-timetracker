@@ -8,4 +8,6 @@ public abstract class LabelNameConstants {
 	public final static String COLUMN_ELLAPSED_TIME = "table.column.ellapsedTime";
 	public final static String COLUMN_ACTIONS = "table.column.actions";
 
+	public final static String ERROR_APPLICATION_INITIALIZATION = "error.application.initialization.exception";
+
 }
