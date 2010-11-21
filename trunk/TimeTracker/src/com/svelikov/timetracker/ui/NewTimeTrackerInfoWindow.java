@@ -1,16 +1,19 @@
 package com.svelikov.timetracker.ui;
 
-import java.awt.GridLayout;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import com.svelikov.timetracker.ActionCommandConstants;
-import com.svelikov.timetracker.action.NewTimeTrackerInfoActionListener;
+import com.svelikov.timetracker.LabelNameConstants;
+import com.svelikov.timetracker.action.NewTimerActionListener;
+import com.svelikov.timetracker.util.UIUtil;
 
 /**
  * 
@@ -18,10 +21,14 @@ import com.svelikov.timetracker.action.NewTimeTrackerInfoActionListener;
  */
 public class NewTimeTrackerInfoWindow extends JFrame {
 
+	private ResourceBundle bundle;
+
+	private JLabel timeTrackerNameLabel;
 	private JTextField timeTrackerName;
 	private JButton createTimerButton;
 	private JButton cancelButton;
 	private final TimeTrackerTableModel tableModel;
+	private JTable table;
 	private final JFrame mainWindow;
 
 	/**
@@ -31,63 +38,70 @@ public class NewTimeTrackerInfoWindow extends JFrame {
 	 * @param mainWindow
 	 */
 	public NewTimeTrackerInfoWindow(final TimeTrackerTableModel tableModel,
-			final JFrame mainWindow) {
+			final JTable table, final JFrame mainWindow) {
+		bundle = UIUtil.getBundle();
 		this.tableModel = tableModel;
 		this.mainWindow = mainWindow;
+		this.table = table;
 	}
 
 	/**
 	 * 
 	 */
 	public void createAndShowWindow() {
-		setTitle("New time tracker info");
+		setTitle(bundle.getString(LabelNameConstants.NEWTIMER_WINDOW_TITLE));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setLayout(new GridLayout(2, 2, 2, 2));
-		setSize(200, 100);
+		setLayout(null);
 
-		final NewTimeTrackerInfoActionListener actionListener = new NewTimeTrackerInfoActionListener(
-				this, tableModel, mainWindow);
-		final JLabel timeTrackerNameLabel = new JLabel("Time tracker name: ");
+		final NewTimerActionListener actionListener = new NewTimerActionListener(
+				this, mainWindow);
+		timeTrackerNameLabel = new JLabel(bundle
+				.getString(LabelNameConstants.LABEL_TIMER_NAME));
 		add(timeTrackerNameLabel);
 
 		timeTrackerName = new JTextField();
 		add(timeTrackerName);
-		timeTrackerName.addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(final KeyEvent arg0) {
-			}
+		timeTrackerName.addKeyListener(actionListener);
 
-			@Override
-			public void keyReleased(final KeyEvent arg0) {
-			}
-
-			@Override
-			public void keyPressed(final KeyEvent ke) {
-				if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-					System.out.println("ENTER");
-				} else if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
-					closeInfoWindow();
-				}
-			}
-		});
-
-		createTimerButton = new JButton("Create");
+		createTimerButton = new JButton(bundle
+				.getString(LabelNameConstants.BUTTON_CREATE));
 		createTimerButton.setActionCommand(ActionCommandConstants.CREATE_TIMER);
 		add(createTimerButton);
 		createTimerButton.addActionListener(actionListener);
 
-		cancelButton = new JButton("Cancel");
+		cancelButton = new JButton(bundle
+				.getString(LabelNameConstants.BUTTON_CANCEL));
 		cancelButton.setActionCommand(ActionCommandConstants.CANCEL_TIMER);
 		add(cancelButton);
 		cancelButton.addActionListener(actionListener);
 
+		// apply sizes
+		final Insets insets = getInsets();
+		Dimension size = timeTrackerNameLabel.getPreferredSize();
+		timeTrackerNameLabel.setBounds(5 + insets.left, 5 + insets.top,
+				size.width + 70, size.height + 15);
+
+		timeTrackerName.setBounds(80 + insets.left, 5 + insets.top,
+				size.width + 155, size.height + 15);
+
+		size = createTimerButton.getPreferredSize();
+		createTimerButton.setBounds(5 + insets.left, 40 + insets.top,
+				size.width + 75, size.height);
+
+		size = cancelButton.getPreferredSize();
+		cancelButton.setBounds(159 + insets.left, 40 + insets.top,
+				size.width + 75, size.height);
+
+		setResizable(true);
+		setSize(330 + insets.left + insets.right, 117 + insets.top
+				+ insets.bottom);
 		setLocationRelativeTo(mainWindow);
-		setResizable(false);
-		pack();
 		setVisible(true);
 	}
 
 	/**
+	 * Getter for the text from the timeTrackerName field.
+	 * 
 	 * @return the timeTrackerName
 	 */
 	public JTextField getTimeTrackerName() {
@@ -95,7 +109,7 @@ public class NewTimeTrackerInfoWindow extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Disposes this window.
 	 */
 	public void closeInfoWindow() {
 		setVisible(false);

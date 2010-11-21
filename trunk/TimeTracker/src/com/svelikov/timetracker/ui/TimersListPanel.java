@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Insets;
 
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -33,12 +32,31 @@ public class TimersListPanel extends TimeTrackerExtendedPanel {
 		table = new JTable(tableModel);
 		table.setPreferredScrollableViewportSize(new Dimension(575, 260));
 		table.setFillsViewportHeight(true);
-		table.setDefaultRenderer(JPanel.class, new ActionColumnRenderer());
+
+		table.getColumnModel().getColumn(2).setCellRenderer(
+				new ActionButtonRenderer());
+		table.getColumnModel().getColumn(2).setCellEditor(
+				new ActionButtonEditor());
+		table.getColumnModel().getColumn(3).setCellRenderer(
+				new ActionButtonRenderer());
+		table.getColumnModel().getColumn(3).setCellEditor(
+				new ActionButtonEditor());
+		table.getColumnModel().getColumn(4).setCellRenderer(
+				new ActionButtonRenderer());
+		table.getColumnModel().getColumn(4).setCellEditor(
+				new ActionButtonEditor());
+		table.getColumnModel().getColumn(5).setCellRenderer(
+				new ActionButtonRenderer());
+		table.getColumnModel().getColumn(5).setCellEditor(
+				new ActionButtonEditor());
 
 		try {
-			UIUtil.setColumnWidth(table, 0, 350);
+			UIUtil.setColumnWidth(table, 0, 300);
 			UIUtil.setColumnWidth(table, 1, 100);
-			UIUtil.setColumnWidth(table, 2, 50);
+			UIUtil.setColumnWidth(table, 2, 25);
+			UIUtil.setColumnWidth(table, 3, 25);
+			UIUtil.setColumnWidth(table, 4, 25);
+			UIUtil.setColumnWidth(table, 5, 25);
 		} catch (final UIInitializationException e) {
 			log.debug(e);
 		}
@@ -50,6 +68,15 @@ public class TimersListPanel extends TimeTrackerExtendedPanel {
 		setBounds(2 + insets.left, 35 + insets.top, size.width, size.height);
 
 		log.info("Created timers list table.");
+	}
+
+	/**
+	 * Getter for the created table.
+	 * 
+	 * @return the table
+	 */
+	public JTable getTable() {
+		return table;
 	}
 
 }

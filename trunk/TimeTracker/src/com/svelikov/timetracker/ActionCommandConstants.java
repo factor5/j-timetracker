@@ -12,6 +12,7 @@ public abstract class ActionCommandConstants {
 	public static final String CANCEL_TIMER = "cancelTimer";
 	public static final String STOP_TIMER = "stopTimer";
 	public static final String START_TIMER = "startTimer";
+	public static final String VIEW_NOTES = "viewNotes";
 	public static final String REMOVE_TIMER = "removeTimer";
 
 }

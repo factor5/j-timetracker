@@ -1,0 +1,60 @@
+package com.svelikov.timetracker.ui;
+
+import java.awt.Component;
+import java.util.EventObject;
+
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.table.TableCellEditor;
+
+/**
+ * Custom JButton editor.
+ * 
+ * @author svelikov
+ */
+public class ActionButtonEditor extends JButton implements TableCellEditor {
+
+	@Override
+	public Component getTableCellEditorComponent(final JTable table,
+			final Object value, final boolean isSelected, final int row,
+			final int column) {
+		buttonPressed(table, row, column);
+		return (Component) value;
+	}
+
+	public void cancelCellEditing() {
+	}
+
+	public boolean stopCellEditing() {
+		return true;
+	}
+
+	public Object getCellEditorValue() {
+		return null;
+	}
+
+	public boolean isCellEditable(final EventObject anEvent) {
+		return true;
+	}
+
+	public boolean shouldSelectCell(final EventObject anEvent) {
+		return true;
+	}
+
+	public void addCellEditorListener(final CellEditorListener l) {
+	}
+
+	public void removeCellEditorListener(final CellEditorListener l) {
+	}
+
+	protected void fireCellEditing(final ChangeEvent e) {
+
+	}
+
+	private void buttonPressed(final JTable table, final int row,
+			final int column) {
+	}
+
+}

@@ -4,19 +4,15 @@
 package com.svelikov.timetracker.util;
 
 import java.awt.Container;
-import java.awt.GridLayout;
+import java.util.ResourceBundle;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-import com.svelikov.timetracker.ActionCommandConstants;
-import com.svelikov.timetracker.action.TimeTrackerAction;
 import com.svelikov.timetracker.exception.UIInitializationException;
+import com.svelikov.timetracker.ui.TimeTrackerTableModel;
 
 /**
  * UI utility provider class.
@@ -25,10 +21,26 @@ import com.svelikov.timetracker.exception.UIInitializationException;
  */
 public class UIUtil {
 
+	private static ResourceBundle bundle = null;
+	public static JTable table;
+	public static TimeTrackerTableModel tableModel;
+
 	/**
 	 * Private constructor.
 	 */
 	private UIUtil() {
+	}
+
+	/**
+	 * Creates and returns the resource bundle.
+	 * 
+	 * @return The resource bundle with labels and messages.
+	 */
+	public static ResourceBundle getBundle() {
+		if (bundle == null) {
+			bundle = ResourceBundle.getBundle("labels");
+		}
+		return bundle;
 	}
 
 	/**
@@ -53,41 +65,6 @@ public class UIUtil {
 	}
 
 	/**
-	 * Creates a panel with action buttons to be placed inside every timer.
-	 * 
-	 * @return A JPanel with action buttons.
-	 */
-	public static JPanel getActionButtons() {
-		final JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(1, 3));
-
-		final TimeTrackerAction actionListener = new TimeTrackerAction();
-
-		final ImageIcon stopIcon = new ImageIcon("img/Aqua-Stop-icon.png");
-		final JButton stopTimerActionButton = new JButton(stopIcon);
-		stopTimerActionButton
-				.setActionCommand(ActionCommandConstants.STOP_TIMER);
-		panel.add(stopTimerActionButton);
-		stopTimerActionButton.addActionListener(actionListener);
-
-		final ImageIcon startIcon = new ImageIcon("img/Aqua-Play-icon.png");
-		final JButton startTimerActionButton = new JButton(startIcon);
-		startTimerActionButton
-				.setActionCommand(ActionCommandConstants.START_TIMER);
-		panel.add(startTimerActionButton);
-		startTimerActionButton.addActionListener(actionListener);
-
-		final ImageIcon deleteIcon = new ImageIcon("img/delete-icon.png");
-		final JButton removeTimerActionButton = new JButton(deleteIcon);
-		removeTimerActionButton
-				.setActionCommand(ActionCommandConstants.REMOVE_TIMER);
-		panel.add(removeTimerActionButton);
-		removeTimerActionButton.addActionListener(actionListener);
-
-		return panel;
-	}
-
-	/**
 	 * Shows windows with messages according the parameters.
 	 * 
 	 * @param warningMessage
@@ -107,6 +84,36 @@ public class UIUtil {
 					"Information", JOptionPane.INFORMATION_MESSAGE);
 			break;
 		}
+	}
+
+	/**
+	 * @return the table
+	 */
+	public static JTable getTable() {
+		return table;
+	}
+
+	/**
+	 * @param table
+	 *            the table to set
+	 */
+	public static void setTable(final JTable table) {
+		UIUtil.table = table;
+	}
+
+	/**
+	 * @return the tableModel
+	 */
+	public static TimeTrackerTableModel getTableModel() {
+		return tableModel;
+	}
+
+	/**
+	 * @param tableModel
+	 *            the tableModel to set
+	 */
+	public static void setTableModel(final TimeTrackerTableModel tableModel) {
+		UIUtil.tableModel = tableModel;
 	}
 
 }
