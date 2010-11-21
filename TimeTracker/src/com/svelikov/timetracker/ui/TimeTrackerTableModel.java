@@ -6,41 +6,56 @@ import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
 import com.svelikov.timetracker.LabelNameConstants;
+import com.svelikov.timetracker.util.UIUtil;
 
 /**
  * Custom table model.
  * 
  * @author svelikov
- * 
  */
 public class TimeTrackerTableModel extends AbstractTableModel {
 
-	private final ResourceBundle bundle = ResourceBundle.getBundle("labels");
+	/**
+	 * Reference to the label's bundle.
+	 */
+	private final ResourceBundle bundle;
 
-	private final Vector<String> columnNames;
+	/**
+	 * Column names.
+	 */
+	private Vector<String> columnNames;
 
-	private final Vector<Object> data;
+	/**
+	 * The model.
+	 */
+	private Vector<Object> data;
 
 	/**
 	 * Constructor that creates this table model.
 	 */
 	public TimeTrackerTableModel() {
+		bundle = UIUtil.getBundle();
+		createModel();
+	}
+
+	/**
+	 * Creates the table model.
+	 */
+	private void createModel() {
 		// create the column names list
-		columnNames = new Vector<String>(3);
-		columnNames.add(bundle.getString(LabelNameConstants.BUTTON_NEW_TIMER));
+		columnNames = new Vector<String>(6);
+		columnNames.add(bundle.getString(LabelNameConstants.COLUMN_TIMER_NAME));
 		columnNames.add(bundle
 				.getString(LabelNameConstants.COLUMN_ELLAPSED_TIME));
-		columnNames.add(bundle.getString(LabelNameConstants.COLUMN_ACTIONS));
+		columnNames.add(bundle.getString(LabelNameConstants.COLUMN_NOTES));
+		columnNames
+				.add(bundle.getString(LabelNameConstants.COLUMN_ACTIONS_RUN));
+		columnNames.add(bundle
+				.getString(LabelNameConstants.COLUMN_ACTIONS_STOP));
+		columnNames.add(bundle
+				.getString(LabelNameConstants.COLUMN_ACTIONS_DELETE));
 
-		// create some data
 		data = new Vector<Object>();
-		// Vector<Object> row = new Vector<Object>();
-		// row.add("test timer");
-		// row.add(new Date());
-		// row.add(UIUtil.getActionButtons());
-		//
-		// data.add(row);
-
 	}
 
 	public int getColumnCount() {
@@ -69,7 +84,10 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 	public boolean isCellEditable(final int row, final int col) {
 		// Note that the data/cell address is constant,
 		// no matter where the cell appears onscreen.
-		return false;
+		if (col == 0 || col == 1) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -81,6 +99,8 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 	}
 
 	/**
+	 * Getter for the underlying model.
+	 * 
 	 * @return the data
 	 */
 	public Vector<Object> getData() {

@@ -6,25 +6,41 @@ package com.svelikov.timetracker.ui;
 import java.util.ResourceBundle;
 
 import javax.swing.JPanel;
+import javax.swing.JTable;
 
 import org.apache.log4j.Logger;
+
+import com.svelikov.timetracker.util.UIUtil;
 
 /**
  * Base component used from all containers in this application. Adds some common
  * logic.
  * 
- * @author Factor5
+ * @author svelikov
  */
 public class TimeTrackerExtendedPanel extends JPanel {
 
-	protected static final ResourceBundle bundle = ResourceBundle
-			.getBundle("labels");
+	/**
+	 * A bundle with labels and messages.
+	 */
+	protected final ResourceBundle bundle;
 
-	protected static final Logger log = Logger
+	/**
+	 * Logger.
+	 */
+	protected final Logger log = Logger
 			.getLogger(TimeTrackerExtendedPanel.class);
 
+	/**
+	 * Reference to the table component.
+	 */
+	protected JTable table;
+
+	/**
+	 * Constructor.
+	 */
 	public TimeTrackerExtendedPanel() {
-		// TODO Auto-generated constructor stub
+		bundle = UIUtil.getBundle();
 	}
 
 	/**

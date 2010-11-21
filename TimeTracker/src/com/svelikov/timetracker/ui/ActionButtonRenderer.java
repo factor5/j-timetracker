@@ -2,18 +2,17 @@ package com.svelikov.timetracker.ui;
 
 import java.awt.Component;
 
-import javax.swing.JPanel;
+import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 /**
- * Custom column renderer. Provides possibility for the JTable to render JPanel
- * or JButon in its cells.
+ * Custom JButton renderer. Provides possibility for the JTable to render
+ * JButton in its cells.
  * 
  * @author svelikov
- * 
  */
-public class ActionColumnRenderer extends JPanel implements TableCellRenderer {
+public class ActionButtonRenderer extends JButton implements TableCellRenderer {
 
 	@Override
 	public Component getTableCellRendererComponent(final JTable table,

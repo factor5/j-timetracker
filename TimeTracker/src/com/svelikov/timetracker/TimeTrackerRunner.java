@@ -8,7 +8,7 @@ import com.svelikov.timetracker.ui.TimeTrackerWindow;
 /**
  * Runner class for this application.
  * 
- * @author Factor5
+ * @author svelikov
  */
 public class TimeTrackerRunner {
 
