@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import com.svelikov.timetracker.ActionCommandConstants;
@@ -16,7 +15,6 @@ import com.svelikov.timetracker.action.NewTimerActionListener;
 import com.svelikov.timetracker.util.UIUtil;
 
 /**
- * 
  * @author Svilen Velikov
  */
 public class NewTimeTrackerInfoWindow extends JFrame {
@@ -27,8 +25,6 @@ public class NewTimeTrackerInfoWindow extends JFrame {
 	private JTextField timeTrackerName;
 	private JButton createTimerButton;
 	private JButton cancelButton;
-	private final TimeTrackerTableModel tableModel;
-	private JTable table;
 	private final JFrame mainWindow;
 
 	/**
@@ -37,12 +33,9 @@ public class NewTimeTrackerInfoWindow extends JFrame {
 	 * @param tableModel
 	 * @param mainWindow
 	 */
-	public NewTimeTrackerInfoWindow(final TimeTrackerTableModel tableModel,
-			final JTable table, final JFrame mainWindow) {
+	public NewTimeTrackerInfoWindow(final JFrame mainWindow) {
 		this.bundle = UIUtil.getBundle();
-		this.tableModel = tableModel;
 		this.mainWindow = mainWindow;
-		this.table = table;
 	}
 
 	/**
