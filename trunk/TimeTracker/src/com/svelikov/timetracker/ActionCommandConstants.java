@@ -3,9 +3,13 @@ package com.svelikov.timetracker;
 /**
  * Action commands applied on user interface components.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
-public abstract class ActionCommandConstants {
+public final class ActionCommandConstants {
+
+	private ActionCommandConstants() {
+
+	}
 
 	public static final String NEW_TIMER = "newTimer";
 	public static final String CREATE_TIMER = "createTimer";
