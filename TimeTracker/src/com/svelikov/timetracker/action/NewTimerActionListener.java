@@ -4,9 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +15,7 @@ import javax.swing.Timer;
 
 import com.svelikov.timetracker.ActionCommandConstants;
 import com.svelikov.timetracker.ElapsedTime;
+import com.svelikov.timetracker.LabelNameConstants;
 import com.svelikov.timetracker.TimeTrackerDTO;
 import com.svelikov.timetracker.ui.NewTimeTrackerInfoWindow;
 import com.svelikov.timetracker.ui.TimeTrackerTableModel;
@@ -30,8 +31,6 @@ import com.svelikov.timetracker.util.UIUtil;
 public class NewTimerActionListener extends BaseAction implements
 		ActionListener, KeyListener {
 
-	private static final int DELAY = 200;
-	private static final int INITIAL_DELAY = 0;
 	private final NewTimeTrackerInfoWindow newTimeTrackerInfoWindow;
 	private final JFrame mainWindow;
 
@@ -74,17 +73,18 @@ public class NewTimerActionListener extends BaseAction implements
 				.getText().trim();
 		if ("".equals(timerName)) {
 			UIUtil.setWarnings(mainWindow,
-					"You must provide a name for the new timer!",
+					LabelNameConstants.MSG_MUST_PROVIDE_NAME,
 					MessageType.INFORMATION);
-		} else if (timerName.length() > 30) {
+		} else if (timerName.length() > TIMER_NAME_LENGTH) {
 			UIUtil.setWarnings(mainWindow,
-					"The name must not be more than 30 chars!",
+					LabelNameConstants.MSG_NAME_TOO_LONG,
 					MessageType.INFORMATION);
 		} else if (isValidName(tableModel, timerName)) {
 			final int timerRowId = createTimerView(timerName);
 			storeTimer(timerName, timerRowId);
 		} else {
-			UIUtil.setWarnings(mainWindow, "Chosen name already exists!",
+			UIUtil.setWarnings(mainWindow,
+					LabelNameConstants.MSG_NAME_ALREADY_EXISTS,
 					MessageType.INFORMATION);
 		}
 		newTimeTrackerInfoWindow.closeInfoWindow();
@@ -124,20 +124,24 @@ public class NewTimerActionListener extends BaseAction implements
 	 *            The name for the new timer.
 	 */
 	protected int createTimerView(final String timerName) {
-		final List<Object> newRow = new Vector<Object>(3);
+		final List<Object> newRow = new ArrayList<Object>(3);
 		newRow.add(timerName);
 		newRow.add(new Date());
 
 		final TimerActionsListener timerActionsListener = new TimerActionsListener();
 
-		newRow.add(getActionButton("img/notes-24.png", "Notes",
+		newRow.add(getActionButton("img/notes-24.png",
+				LabelNameConstants.TOOLTIP_NOTES,
 				ActionCommandConstants.VIEW_NOTES,
 				new NotesActionButtonListener()));
-		newRow.add(getActionButton("img/start-24.png", "Start the timer",
+		newRow.add(getActionButton("img/start-24.png",
+				LabelNameConstants.TOOLTIP_START_TIMER,
 				ActionCommandConstants.START_TIMER, timerActionsListener));
-		newRow.add(getActionButton("img/stop-24.png", "Stop the timer",
+		newRow.add(getActionButton("img/stop-24.png",
+				LabelNameConstants.TOOLTIP_STOP_TIMER,
 				ActionCommandConstants.STOP_TIMER, timerActionsListener));
-		newRow.add(getActionButton("img/delete-24.png", "Delete the timer",
+		newRow.add(getActionButton("img/delete-24.png",
+				LabelNameConstants.TOOLTIP_DELETE_TIMER,
 				ActionCommandConstants.REMOVE_TIMER, timerActionsListener));
 
 		final List<Object> data = tableModel.getData();

@@ -1,7 +1,8 @@
 package com.svelikov.timetracker.ui;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -23,12 +24,12 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 	/**
 	 * Column names.
 	 */
-	private Vector<String> columnNames;
+	private List<String> columnNames;
 
 	/**
 	 * The model.
 	 */
-	private Vector<Object> data;
+	private List<Object> data;
 
 	/**
 	 * Constructor that creates this table model.
@@ -43,7 +44,7 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 	 */
 	private void createModel() {
 		// create the column names list
-		columnNames = new Vector<String>(6);
+		columnNames = new ArrayList<String>(6);
 		columnNames.add(bundle.getString(LabelNameConstants.COLUMN_TIMER_NAME));
 		columnNames.add(bundle
 				.getString(LabelNameConstants.COLUMN_ELLAPSED_TIME));
@@ -55,7 +56,7 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 		columnNames.add(bundle
 				.getString(LabelNameConstants.COLUMN_ACTIONS_DELETE));
 
-		data = new Vector<Object>();
+		data = new ArrayList<Object>();
 	}
 
 	public int getColumnCount() {
@@ -72,7 +73,7 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 	}
 
 	public Object getValueAt(final int row, final int col) {
-		return ((Vector<?>) data.get(row)).get(col);
+		return ((List<?>) data.get(row)).get(col);
 	}
 
 	@Override
@@ -93,7 +94,7 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 	@Override
 	public void setValueAt(final Object value, final int rowIndex,
 			final int colIndex) {
-		final Vector<Object> row = (Vector<Object>) data.get(rowIndex);
+		final List<Object> row = (List<Object>) data.get(rowIndex);
 		row.set(colIndex, value);
 		fireTableCellUpdated(rowIndex, colIndex);
 	}
@@ -103,7 +104,7 @@ public class TimeTrackerTableModel extends AbstractTableModel {
 	 * 
 	 * @return the data
 	 */
-	public Vector<Object> getData() {
+	public List<Object> getData() {
 		return data;
 	}
 
