@@ -3,7 +3,7 @@ package com.svelikov.timetracker.util;
 /**
  * A message type enumeration.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public enum MessageType {
 	WARNING, INFORMATION

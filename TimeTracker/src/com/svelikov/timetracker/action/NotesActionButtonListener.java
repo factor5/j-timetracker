@@ -7,14 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class NotesActionButtonListener extends BaseAction implements
 		ActionListener {
 
 	@Override
 	public void actionPerformed(final ActionEvent ae) {
-		System.out.println("Edit notes button");
+		LOG.debug("Edit notes button");
 	}
 
 }

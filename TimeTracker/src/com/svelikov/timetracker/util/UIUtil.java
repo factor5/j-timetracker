@@ -17,9 +17,9 @@ import com.svelikov.timetracker.ui.TimeTrackerTableModel;
 /**
  * UI utility provider class.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
-public class UIUtil {
+public final class UIUtil {
 
 	private static ResourceBundle bundle = null;
 	public static JTable table;
@@ -29,6 +29,7 @@ public class UIUtil {
 	 * Private constructor.
 	 */
 	private UIUtil() {
+
 	}
 
 	/**
@@ -44,7 +45,6 @@ public class UIUtil {
 	}
 
 	/**
-	 * 
 	 * @param table
 	 * @param columnNumber
 	 * @param width
@@ -75,14 +75,16 @@ public class UIUtil {
 	public static void setWarnings(final Container parent,
 			final String warningMessage, final MessageType msgType) {
 		switch (msgType) {
-		case WARNING:
-			JOptionPane.showMessageDialog(parent, warningMessage, "Warning",
-					JOptionPane.WARNING_MESSAGE);
-			break;
-		case INFORMATION:
-			JOptionPane.showMessageDialog(parent, warningMessage,
-					"Information", JOptionPane.INFORMATION_MESSAGE);
-			break;
+			case WARNING:
+				JOptionPane.showMessageDialog(parent, warningMessage,
+						"Warning", JOptionPane.WARNING_MESSAGE);
+				break;
+			case INFORMATION:
+				JOptionPane.showMessageDialog(parent, warningMessage,
+						"Information", JOptionPane.INFORMATION_MESSAGE);
+				break;
+			default:
+				break;
 		}
 	}
 

@@ -4,6 +4,7 @@ import javax.swing.JTable;
 
 import org.apache.log4j.Logger;
 
+import com.svelikov.timetracker.TimeTrackerMap;
 import com.svelikov.timetracker.ui.TimeTrackerTableModel;
 import com.svelikov.timetracker.util.UIUtil;
 
@@ -11,14 +12,19 @@ import com.svelikov.timetracker.util.UIUtil;
  * Base action class providing access to shared resources for all actions and
  * and some common logic.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class BaseAction {
 
 	/**
 	 * Logger.
 	 */
-	protected static final Logger log = Logger.getLogger(BaseAction.class);
+	protected static final Logger LOG = Logger.getLogger(BaseAction.class);
+
+	/**
+	 * A map that stores the timers.
+	 */
+	public static TimeTrackerMap timers;
 
 	/**
 	 * The tableModel.
@@ -34,8 +40,8 @@ public class BaseAction {
 	 * Constructor that initializes fields.
 	 */
 	public BaseAction() {
-		table = UIUtil.getTable();
-		tableModel = UIUtil.getTableModel();
+		this.table = UIUtil.getTable();
+		this.tableModel = UIUtil.getTableModel();
 	}
 
 }

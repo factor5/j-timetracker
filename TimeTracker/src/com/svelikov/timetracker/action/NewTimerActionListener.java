@@ -5,21 +5,33 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 import com.svelikov.timetracker.ActionCommandConstants;
+import com.svelikov.timetracker.ElapsedTime;
+import com.svelikov.timetracker.TimeTrackerDTO;
 import com.svelikov.timetracker.ui.NewTimeTrackerInfoWindow;
 import com.svelikov.timetracker.ui.TimeTrackerTableModel;
 import com.svelikov.timetracker.util.MessageType;
 import com.svelikov.timetracker.util.UIUtil;
 
+/**
+ * Action listener for the window where the user enters the name of the new time
+ * tracker.
+ * 
+ * @author Svilen Velikov
+ */
 public class NewTimerActionListener extends BaseAction implements
 		ActionListener, KeyListener {
 
+	private static final int DELAY = 200;
+	private static final int INITIAL_DELAY = 0;
 	private final NewTimeTrackerInfoWindow newTimeTrackerInfoWindow;
 	private final JFrame mainWindow;
 
@@ -38,6 +50,10 @@ public class NewTimerActionListener extends BaseAction implements
 		this.mainWindow = mainWindow;
 	}
 
+	/**
+	 * Catches the events fired by the {@link NewTimeTrackerInfoWindow}
+	 * controls.
+	 */
 	@Override
 	public void actionPerformed(final ActionEvent ae) {
 		if (ae.getActionCommand().equals(ActionCommandConstants.CREATE_TIMER)) {
@@ -56,12 +72,17 @@ public class NewTimerActionListener extends BaseAction implements
 	private void createTimerActionDispatcher() {
 		final String timerName = newTimeTrackerInfoWindow.getTimeTrackerName()
 				.getText().trim();
-		if (timerName.equals("")) {
+		if ("".equals(timerName)) {
 			UIUtil.setWarnings(mainWindow,
 					"You must provide a name for the new timer!",
 					MessageType.INFORMATION);
+		} else if (timerName.length() > 30) {
+			UIUtil.setWarnings(mainWindow,
+					"The name must not be more than 30 chars!",
+					MessageType.INFORMATION);
 		} else if (isValidName(tableModel, timerName)) {
-			createTimer(timerName);
+			final int timerRowId = createTimerView(timerName);
+			storeTimer(timerName, timerRowId);
 		} else {
 			UIUtil.setWarnings(mainWindow, "Chosen name already exists!",
 					MessageType.INFORMATION);
@@ -70,13 +91,40 @@ public class NewTimerActionListener extends BaseAction implements
 	}
 
 	/**
+	 * Creates a timer dto object and puts it in the timers map.
+	 * 
+	 * @param timerName
+	 *            The name to use for this new timer.
+	 * @param timerRowId
+	 *            The row index of the new timer. This is the position in the
+	 *            table model where this timer will be set.
+	 */
+	private void storeTimer(final String timerName, final int timerRowId) {
+		final TimeTrackerDTO timer = new TimeTrackerDTO();
+		timer.setTimerName(timerName);
+		timer.setDateCreated(new Date());
+		timer.setElapsedTime(new ElapsedTime());
+		timer.setNotes("");
+		timer.setId(timerRowId);
+
+		final Timer timerTask = new Timer(DELAY, new TimeCounterListener(
+				timerRowId, timer));
+		timerTask.setInitialDelay(INITIAL_DELAY);
+		timerTask.setDelay(DELAY);
+
+		timer.setTimer(timerTask);
+
+		timers.put(timerRowId, timer);
+	}
+
+	/**
 	 * Creates a row in the table for the new timer.
 	 * 
 	 * @param timerName
 	 *            The name for the new timer.
 	 */
-	protected void createTimer(final String timerName) {
-		final Vector<Object> newRow = new Vector<Object>(3);
+	protected int createTimerView(final String timerName) {
+		final List<Object> newRow = new Vector<Object>(3);
 		newRow.add(timerName);
 		newRow.add(new Date());
 
@@ -92,9 +140,10 @@ public class NewTimerActionListener extends BaseAction implements
 		newRow.add(getActionButton("img/delete-24.png", "Delete the timer",
 				ActionCommandConstants.REMOVE_TIMER, timerActionsListener));
 
-		final Vector<Object> data = tableModel.getData();
+		final List<Object> data = tableModel.getData();
 		data.add(newRow);
 		tableModel.fireTableDataChanged();
+		return data.indexOf(newRow);
 	}
 
 	/**

@@ -17,7 +17,7 @@ import com.svelikov.timetracker.util.UIUtil;
 
 /**
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class NewTimeTrackerInfoWindow extends JFrame {
 
@@ -39,14 +39,15 @@ public class NewTimeTrackerInfoWindow extends JFrame {
 	 */
 	public NewTimeTrackerInfoWindow(final TimeTrackerTableModel tableModel,
 			final JTable table, final JFrame mainWindow) {
-		bundle = UIUtil.getBundle();
+		this.bundle = UIUtil.getBundle();
 		this.tableModel = tableModel;
 		this.mainWindow = mainWindow;
 		this.table = table;
 	}
 
 	/**
-	 * 
+	 * Creates and shows a window where the user can enter the name for the new
+	 * timer.
 	 */
 	public void createAndShowWindow() {
 		setTitle(bundle.getString(LabelNameConstants.NEWTIMER_WINDOW_TITLE));

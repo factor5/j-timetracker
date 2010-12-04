@@ -16,7 +16,7 @@ import com.svelikov.timetracker.util.UIUtil;
  * Base component used from all containers in this application. Adds some common
  * logic.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class TimeTrackerExtendedPanel extends JPanel {
 
@@ -28,7 +28,7 @@ public class TimeTrackerExtendedPanel extends JPanel {
 	/**
 	 * Logger.
 	 */
-	protected final Logger log = Logger
+	protected final static Logger LOG = Logger
 			.getLogger(TimeTrackerExtendedPanel.class);
 
 	/**
