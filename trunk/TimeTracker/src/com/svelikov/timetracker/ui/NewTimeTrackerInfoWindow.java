@@ -15,11 +15,14 @@ import com.svelikov.timetracker.action.NewTimerActionListener;
 import com.svelikov.timetracker.util.UIUtil;
 
 /**
+ * New time tracker info window is where the user can enter the name for the new
+ * timer.
+ * 
  * @author Svilen Velikov
  */
 public class NewTimeTrackerInfoWindow extends JFrame {
 
-	private ResourceBundle bundle;
+	private final ResourceBundle bundle;
 
 	private JLabel timeTrackerNameLabel;
 	private JTextField timeTrackerName;

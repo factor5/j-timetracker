@@ -16,6 +16,10 @@ import com.svelikov.timetracker.util.UIUtil;
  */
 public class BaseAction {
 
+	public static final int DELAY = 200;
+	public static final int INITIAL_DELAY = 0;
+	public static final int TIMER_NAME_LENGTH = 30;
+
 	/**
 	 * Logger.
 	 */
