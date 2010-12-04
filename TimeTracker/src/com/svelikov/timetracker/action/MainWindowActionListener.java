@@ -41,7 +41,7 @@ public class MainWindowActionListener extends BaseAction implements
 		// a button for creating of new timer is pressed
 		if (ae.getActionCommand().equals(ActionCommandConstants.NEW_TIMER)) {
 			final NewTimeTrackerInfoWindow infoWindow = new NewTimeTrackerInfoWindow(
-					tableModel, table, mainWindow);
+					mainWindow);
 			infoWindow.createAndShowWindow();
 		}
 	}
