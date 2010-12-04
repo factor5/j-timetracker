@@ -7,7 +7,6 @@ import com.svelikov.timetracker.ElapsedTime;
 import com.svelikov.timetracker.TimeTrackerDTO;
 
 /**
- * 
  * @author Svilen Velikov
  */
 public class TimeCounterListener extends BaseAction implements ActionListener {
@@ -35,12 +34,12 @@ public class TimeCounterListener extends BaseAction implements ActionListener {
 	 */
 	private void updateElapsedTime(final ElapsedTime elapsedTime) {
 		boolean hasCarry = false;
-		final int minutes = elapsedTime.getMunites();
+		final int minutes = elapsedTime.getMinutes();
 		if (minutes == 59) {
-			elapsedTime.setMunites(0);
+			elapsedTime.setMinutes(0);
 			hasCarry = true;
 		} else {
-			elapsedTime.setMunites(minutes + 1);
+			elapsedTime.setMinutes(minutes + 1);
 		}
 		if (hasCarry) {
 			final int hours = elapsedTime.getHours();

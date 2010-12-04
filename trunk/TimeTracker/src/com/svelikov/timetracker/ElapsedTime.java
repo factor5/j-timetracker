@@ -11,11 +11,11 @@ package com.svelikov.timetracker;
  */
 public class ElapsedTime {
 
-	private int days;
+	private Integer days;
 
-	private int hours;
+	private Integer hours;
 
-	private int minutes;
+	private Integer minutes;
 
 	public ElapsedTime() {
 		this.days = 0;
@@ -51,7 +51,7 @@ public class ElapsedTime {
 	/**
 	 * @return the days
 	 */
-	public int getDays() {
+	public Integer getDays() {
 		return days;
 	}
 
@@ -59,14 +59,14 @@ public class ElapsedTime {
 	 * @param days
 	 *            the days to set
 	 */
-	public void setDays(final int days) {
+	public void setDays(final Integer days) {
 		this.days = days;
 	}
 
 	/**
 	 * @return the hours
 	 */
-	public int getHours() {
+	public Integer getHours() {
 		return hours;
 	}
 
@@ -74,23 +74,23 @@ public class ElapsedTime {
 	 * @param hours
 	 *            the hours to set
 	 */
-	public void setHours(final int hours) {
+	public void setHours(final Integer hours) {
 		this.hours = hours;
 	}
 
 	/**
-	 * @return the munites
+	 * @return the minutes
 	 */
-	public int getMunites() {
+	public Integer getMinutes() {
 		return minutes;
 	}
 
 	/**
-	 * @param munites
-	 *            the munites to set
+	 * @param minutes
+	 *            the minutes to set
 	 */
-	public void setMunites(final int munites) {
-		this.minutes = munites;
+	public void setMinutes(final Integer minutes) {
+		this.minutes = minutes;
 	}
 
 }

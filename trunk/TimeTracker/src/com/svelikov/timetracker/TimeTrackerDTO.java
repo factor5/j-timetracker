@@ -12,7 +12,7 @@ import javax.swing.Timer;
  */
 public class TimeTrackerDTO {
 
-	private int id;
+	private Integer id;
 
 	private String timerName;
 
@@ -23,6 +23,13 @@ public class TimeTrackerDTO {
 	private ElapsedTime elapsedTime;
 
 	private Date dateCreated;
+
+	/**
+	 * Constructor.
+	 */
+	public TimeTrackerDTO() {
+		elapsedTime = new ElapsedTime();
+	}
 
 	/**
 	 * @return the timer
@@ -112,6 +119,16 @@ public class TimeTrackerDTO {
 	 */
 	public void setElapsedTime(final ElapsedTime elapsedTime) {
 		this.elapsedTime = elapsedTime;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return "TimeTrackerDTO [id=" + id + ", timerName=" + timerName
+				+ ", notes=" + notes + ", elapsedTime=" + elapsedTime
+				+ ", dateCreated=" + dateCreated + "]";
 	}
 
 }
