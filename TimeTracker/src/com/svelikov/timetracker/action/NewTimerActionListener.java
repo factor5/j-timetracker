@@ -126,7 +126,7 @@ public class NewTimerActionListener extends BaseAction implements
 	protected int createTimerView(final String timerName) {
 		final List<Object> newRow = new ArrayList<Object>(3);
 		newRow.add(timerName);
-		newRow.add(new Date());
+		newRow.add("00:00:00");
 
 		final TimerActionsListener timerActionsListener = new TimerActionsListener();
 
