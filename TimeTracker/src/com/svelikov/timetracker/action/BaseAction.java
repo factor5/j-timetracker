@@ -1,5 +1,7 @@
 package com.svelikov.timetracker.action;
 
+import java.util.ResourceBundle;
+
 import javax.swing.JTable;
 
 import org.apache.log4j.Logger;
@@ -26,9 +28,14 @@ public class BaseAction {
 	protected static final Logger LOG = Logger.getLogger(BaseAction.class);
 
 	/**
+	 * Resource bundle.
+	 */
+	protected final ResourceBundle bundle;
+
+	/**
 	 * A map that stores the timers.
 	 */
-	public static TimeTrackerMap timers;
+	protected static TimeTrackerMap timers;
 
 	/**
 	 * The tableModel.
@@ -46,6 +53,7 @@ public class BaseAction {
 	public BaseAction() {
 		this.table = UIUtil.getTable();
 		this.tableModel = UIUtil.getTableModel();
+		this.bundle = UIUtil.getBundle();
 	}
 
 }
