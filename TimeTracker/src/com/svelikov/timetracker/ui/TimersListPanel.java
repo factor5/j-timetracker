@@ -2,10 +2,12 @@ package com.svelikov.timetracker.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Insets;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
 
 import com.svelikov.timetracker.exception.UIInitializationException;
 import com.svelikov.timetracker.util.UIUtil;
@@ -30,8 +32,10 @@ public class TimersListPanel extends TimeTrackerExtendedPanel {
 	 */
 	public TimersListPanel(final TimeTrackerTableModel tableModel) {
 		table = new JTable(tableModel);
-		table.setPreferredScrollableViewportSize(new Dimension(575, 260));
+		table.setPreferredScrollableViewportSize(new Dimension(615, 260));
 		table.setFillsViewportHeight(true);
+		table.setFont(new Font(TABLE_FONT_FAMILY, TABLE_FONT_SIZE,
+				TABLE_FONT_SIZE));
 
 		table.getColumnModel().getColumn(2).setCellRenderer(
 				new ActionButtonRenderer());
@@ -50,13 +54,18 @@ public class TimersListPanel extends TimeTrackerExtendedPanel {
 		table.getColumnModel().getColumn(5).setCellEditor(
 				new ActionButtonEditor());
 
+		table.setRowHeight(TABLE_ROW_HEIGHT);
+		final JTableHeader header = table.getTableHeader();
+		header.setFont(new Font(TABLE_HEADER_FONT_FAMILY,
+				TABLE_HEADER_FONT_STYLE, TABLE_HEADER_FONT_SIZE));
+
 		try {
 			UIUtil.setColumnWidth(table, 0, 300);
 			UIUtil.setColumnWidth(table, 1, 100);
-			UIUtil.setColumnWidth(table, 2, 25);
-			UIUtil.setColumnWidth(table, 3, 25);
-			UIUtil.setColumnWidth(table, 4, 25);
-			UIUtil.setColumnWidth(table, 5, 25);
+			UIUtil.setColumnWidth(table, 2, 35);
+			UIUtil.setColumnWidth(table, 3, 35);
+			UIUtil.setColumnWidth(table, 4, 35);
+			UIUtil.setColumnWidth(table, 5, 35);
 		} catch (final UIInitializationException e) {
 			LOG.debug(e);
 		}

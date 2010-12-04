@@ -26,7 +26,7 @@ public class OptionsPanel extends TimeTrackerExtendedPanel {
 	 */
 	public OptionsPanel() {
 		setLayout(null);
-		setSize(new Dimension(600, 34));
+		setSize(new Dimension(MAIN_WINDOW_WIDTH, 34));
 
 		createTimeTracker = new JButton(bundle
 				.getString(LabelNameConstants.BUTTON_NEW_TIMER));
@@ -36,7 +36,7 @@ public class OptionsPanel extends TimeTrackerExtendedPanel {
 
 		final Insets insets = getInsets();
 		final Dimension size = createTimeTracker.getPreferredSize();
-		createTimeTracker.setBounds(480 + insets.left, 4 + insets.top,
+		createTimeTracker.setBounds(519 + insets.left, 4 + insets.top,
 				size.width + 10, size.height);
 
 		LOG.info("Create options panel.");
