@@ -33,9 +33,11 @@ public class TimeTrackerWindow extends TimeTrackerExtendedPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setContentPane(this);
 		frame.setLocation(200, 200);
-		frame.setMinimumSize(new Dimension(600, 300));
+		frame.setMinimumSize(new Dimension(MAIN_WINDOW_WIDTH,
+				MAIN_WINDOW_HEIGHT));
 		setLayout(null);
 		setOpaque(true);
+		frame.setResizable(false);
 
 		LOG.info("Created main window.");
 

@@ -3,6 +3,7 @@
  */
 package com.svelikov.timetracker.ui;
 
+import java.awt.Font;
 import java.util.ResourceBundle;
 
 import javax.swing.JPanel;
@@ -19,6 +20,16 @@ import com.svelikov.timetracker.util.UIUtil;
  * @author Svilen Velikov
  */
 public class TimeTrackerExtendedPanel extends JPanel {
+
+	public static final int MAIN_WINDOW_WIDTH = 627;
+	public static final int MAIN_WINDOW_HEIGHT = 332;
+	public static final String TABLE_FONT_FAMILY = "Agency FB";
+	public static final int TABLE_FONT_STYLE = Font.PLAIN;
+	public static final int TABLE_FONT_SIZE = 15;
+	public static final String TABLE_HEADER_FONT_FAMILY = "Arial";
+	public static final int TABLE_HEADER_FONT_STYLE = Font.BOLD;
+	public static final int TABLE_HEADER_FONT_SIZE = 12;
+	public static final int TABLE_ROW_HEIGHT = 30;
 
 	/**
 	 * A bundle with labels and messages.
