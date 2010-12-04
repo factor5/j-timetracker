@@ -3,9 +3,13 @@ package com.svelikov.timetracker;
 /**
  * Constants for access the labels from resource bundle.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
-public abstract class LabelNameConstants {
+public final class LabelNameConstants {
+
+	private LabelNameConstants() {
+
+	}
 
 	public final static String MAIN_WINDOW_TITLE = "main.window.title";
 	public final static String NEWTIMER_WINDOW_TITLE = "newTimerInfo.window.title";
