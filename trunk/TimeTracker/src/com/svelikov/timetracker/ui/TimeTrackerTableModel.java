@@ -11,7 +11,7 @@ import com.svelikov.timetracker.util.UIUtil;
 /**
  * Custom table model.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class TimeTrackerTableModel extends AbstractTableModel {
 

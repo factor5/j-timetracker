@@ -12,7 +12,7 @@ import com.svelikov.timetracker.LabelNameConstants;
 /**
  * Options panel.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class OptionsPanel extends TimeTrackerExtendedPanel {
 
@@ -39,7 +39,7 @@ public class OptionsPanel extends TimeTrackerExtendedPanel {
 		createTimeTracker.setBounds(480 + insets.left, 4 + insets.top,
 				size.width + 10, size.height);
 
-		log.info("Create options panel.");
+		LOG.info("Create options panel.");
 	}
 
 	/**

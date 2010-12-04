@@ -13,14 +13,14 @@ import com.svelikov.timetracker.util.UIUtil;
 /**
  * A JTable wrapped in scroller pane.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class TimersListPanel extends TimeTrackerExtendedPanel {
 
 	/**
 	 * This table.
 	 */
-	private JTable table;
+	private final JTable table;
 
 	/**
 	 * Constructor that creates this component.
@@ -58,7 +58,7 @@ public class TimersListPanel extends TimeTrackerExtendedPanel {
 			UIUtil.setColumnWidth(table, 4, 25);
 			UIUtil.setColumnWidth(table, 5, 25);
 		} catch (final UIInitializationException e) {
-			log.debug(e);
+			LOG.debug(e);
 		}
 
 		setLayout(new BorderLayout());
@@ -67,7 +67,7 @@ public class TimersListPanel extends TimeTrackerExtendedPanel {
 		final Dimension size = getPreferredSize();
 		setBounds(2 + insets.left, 35 + insets.top, size.width, size.height);
 
-		log.info("Created timers list table.");
+		LOG.info("Created timers list table.");
 	}
 
 	/**

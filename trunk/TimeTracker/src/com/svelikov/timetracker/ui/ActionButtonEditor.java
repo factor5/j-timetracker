@@ -12,7 +12,7 @@ import javax.swing.table.TableCellEditor;
 /**
  * Custom JButton editor.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class ActionButtonEditor extends JButton implements TableCellEditor {
 
@@ -25,6 +25,7 @@ public class ActionButtonEditor extends JButton implements TableCellEditor {
 	}
 
 	public void cancelCellEditing() {
+
 	}
 
 	public boolean stopCellEditing() {
@@ -43,13 +44,17 @@ public class ActionButtonEditor extends JButton implements TableCellEditor {
 		return true;
 	}
 
-	public void addCellEditorListener(final CellEditorListener l) {
+	public void addCellEditorListener(
+			final CellEditorListener cellEditorListener) {
+
 	}
 
-	public void removeCellEditorListener(final CellEditorListener l) {
+	public void removeCellEditorListener(
+			final CellEditorListener cellEditorListener) {
+
 	}
 
-	protected void fireCellEditing(final ChangeEvent e) {
+	protected void fireCellEditing(final ChangeEvent changeEvent) {
 
 	}
 

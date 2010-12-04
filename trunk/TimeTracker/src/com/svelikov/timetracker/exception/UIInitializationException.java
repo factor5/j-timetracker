@@ -4,7 +4,7 @@
 package com.svelikov.timetracker.exception;
 
 /**
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class UIInitializationException extends Exception {
 	public UIInitializationException() {

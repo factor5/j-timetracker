@@ -10,7 +10,7 @@ import javax.swing.table.TableCellRenderer;
  * Custom JButton renderer. Provides possibility for the JTable to render
  * JButton in its cells.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class ActionButtonRenderer extends JButton implements TableCellRenderer {
 

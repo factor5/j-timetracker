@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import com.svelikov.timetracker.LabelNameConstants;
+import com.svelikov.timetracker.TimeTrackerMap;
 import com.svelikov.timetracker.action.MainWindowActionListener;
 import com.svelikov.timetracker.util.MessageType;
 import com.svelikov.timetracker.util.UIUtil;
@@ -12,7 +13,7 @@ import com.svelikov.timetracker.util.UIUtil;
 /**
  * This is the main interface window for this application.
  * 
- * @author svelikov
+ * @author Svilen Velikov
  */
 public class TimeTrackerWindow extends TimeTrackerExtendedPanel {
 
@@ -36,7 +37,7 @@ public class TimeTrackerWindow extends TimeTrackerExtendedPanel {
 		setLayout(null);
 		setOpaque(true);
 
-		log.info("Created main window.");
+		LOG.info("Created main window.");
 
 		try {
 			// create custom table model
@@ -50,8 +51,9 @@ public class TimeTrackerWindow extends TimeTrackerExtendedPanel {
 			UIUtil.setTable(table);
 			add(timersListPanel);
 
+			final TimeTrackerMap timersMap = new TimeTrackerMap();
 			final MainWindowActionListener mainWindowActionListener = new MainWindowActionListener(
-					frame);
+					frame, timersMap);
 
 			// create the options interface panel
 			final OptionsPanel optionsPanel = new OptionsPanel();
@@ -62,7 +64,7 @@ public class TimeTrackerWindow extends TimeTrackerExtendedPanel {
 			frame.setVisible(true);
 
 		} catch (final Exception e) {
-			log
+			LOG
 					.debug(
 							getLabel(LabelNameConstants.ERROR_APPLICATION_INITIALIZATION),
 							e);
