@@ -72,19 +72,19 @@ public class NewTimerActionListener extends BaseAction implements
 		final String timerName = newTimeTrackerInfoWindow.getTimeTrackerName()
 				.getText().trim();
 		if ("".equals(timerName)) {
-			UIUtil.setWarnings(mainWindow,
-					LabelNameConstants.MSG_MUST_PROVIDE_NAME,
+			UIUtil.setWarnings(mainWindow, bundle
+					.getString(LabelNameConstants.MSG_MUST_PROVIDE_NAME),
 					MessageType.INFORMATION);
 		} else if (timerName.length() > TIMER_NAME_LENGTH) {
-			UIUtil.setWarnings(mainWindow,
-					LabelNameConstants.MSG_NAME_TOO_LONG,
+			UIUtil.setWarnings(mainWindow, bundle
+					.getString(LabelNameConstants.MSG_NAME_TOO_LONG),
 					MessageType.INFORMATION);
 		} else if (isValidName(tableModel, timerName)) {
 			final int timerRowId = createTimerView(timerName);
 			storeTimer(timerName, timerRowId);
 		} else {
-			UIUtil.setWarnings(mainWindow,
-					LabelNameConstants.MSG_NAME_ALREADY_EXISTS,
+			UIUtil.setWarnings(mainWindow, bundle
+					.getString(LabelNameConstants.MSG_NAME_ALREADY_EXISTS),
 					MessageType.INFORMATION);
 		}
 		newTimeTrackerInfoWindow.closeInfoWindow();
@@ -130,18 +130,18 @@ public class NewTimerActionListener extends BaseAction implements
 
 		final TimerActionsListener timerActionsListener = new TimerActionsListener();
 
-		newRow.add(getActionButton("img/notes-24.png",
-				LabelNameConstants.TOOLTIP_NOTES,
+		newRow.add(getActionButton("img/notes-24.png", bundle
+				.getString(LabelNameConstants.TOOLTIP_NOTES),
 				ActionCommandConstants.VIEW_NOTES,
 				new NotesActionButtonListener()));
-		newRow.add(getActionButton("img/start-24.png",
-				LabelNameConstants.TOOLTIP_START_TIMER,
+		newRow.add(getActionButton("img/start-24.png", bundle
+				.getString(LabelNameConstants.TOOLTIP_START_TIMER),
 				ActionCommandConstants.START_TIMER, timerActionsListener));
-		newRow.add(getActionButton("img/stop-24.png",
-				LabelNameConstants.TOOLTIP_STOP_TIMER,
+		newRow.add(getActionButton("img/stop-24.png", bundle
+				.getString(LabelNameConstants.TOOLTIP_STOP_TIMER),
 				ActionCommandConstants.STOP_TIMER, timerActionsListener));
-		newRow.add(getActionButton("img/delete-24.png",
-				LabelNameConstants.TOOLTIP_DELETE_TIMER,
+		newRow.add(getActionButton("img/delete-24.png", bundle
+				.getString(LabelNameConstants.TOOLTIP_DELETE_TIMER),
 				ActionCommandConstants.REMOVE_TIMER, timerActionsListener));
 
 		final List<Object> data = tableModel.getData();
