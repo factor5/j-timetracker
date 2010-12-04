@@ -17,7 +17,7 @@ public class TimeTrackerRunner {
 	/**
 	 * Logger.
 	 */
-	private static Logger log = Logger.getLogger(TimeTrackerRunner.class);
+	private static final Logger LOG = Logger.getLogger(TimeTrackerRunner.class);
 
 	/**
 	 * Starter method.
@@ -29,13 +29,13 @@ public class TimeTrackerRunner {
 			// UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
 		} catch (final UnsupportedLookAndFeelException ex) {
-			log.debug(ex);
+			LOG.debug(ex);
 		} catch (final IllegalAccessException ex) {
-			log.debug(ex);
+			LOG.debug(ex);
 		} catch (final InstantiationException ex) {
-			log.debug(ex);
+			LOG.debug(ex);
 		} catch (final ClassNotFoundException ex) {
-			log.debug(ex);
+			LOG.debug(ex);
 		}
 		/* Turn off metal's use of bold fonts */
 		UIManager.put("swing.boldMetal", Boolean.FALSE);
