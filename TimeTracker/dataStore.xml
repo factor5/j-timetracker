@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataStore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="sirmenium.xsd">
+	
+	<timer id="1">
+		<timerName>First timer name</timerName>
+		<notes>ala bala</notes>
+		<dateCreated></dateCreated>
+		<elapsedTime>
+			<days>00</days>
+			<hours>01</hours>
+			<minutes>23</minutes>
+		</elapsedTime>
+	</timer>
+	<timer id="2">
+		<timerName>Second timer name</timerName>
+		<notes>maleee</notes>
+		<dateCreated></dateCreated>
+		<elapsedTime>
+			<days>12</days>
+			<hours>02</hours>
+			<minutes>12</minutes>
+		</elapsedTime>
+	</timer>
+	<timer id="3">
+		<timerName>Third timer name</timerName>
+		<notes>drun drun</notes>
+		<dateCreated></dateCreated>
+		<elapsedTime>
+			<days>00</days>
+			<hours>11</hours>
+			<minutes>01</minutes>
+		</elapsedTime>
+	</timer>
+	
+</dataStore>
