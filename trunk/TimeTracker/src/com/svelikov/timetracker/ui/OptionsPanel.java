@@ -31,7 +31,8 @@ public class OptionsPanel extends TimeTrackerExtendedPanel {
 		createTimeTracker = new JButton(bundle
 				.getString(LabelNameConstants.BUTTON_NEW_TIMER));
 		createTimeTracker.setActionCommand(ActionCommandConstants.NEW_TIMER);
-		createTimeTracker.setToolTipText("Create a new time tracker");
+		createTimeTracker.setToolTipText(bundle
+				.getString(LabelNameConstants.TOOLTIP_CREATE_TIMER));
 		add(createTimeTracker);
 
 		final Insets insets = getInsets();
@@ -39,7 +40,7 @@ public class OptionsPanel extends TimeTrackerExtendedPanel {
 		createTimeTracker.setBounds(519 + insets.left, 4 + insets.top,
 				size.width + 10, size.height);
 
-		LOG.info("Create options panel.");
+		LOG.info("Created options panel.");
 	}
 
 	/**
@@ -51,4 +52,5 @@ public class OptionsPanel extends TimeTrackerExtendedPanel {
 	public void setActionListener(final ActionListener listener) {
 		createTimeTracker.addActionListener(listener);
 	}
+
 }
