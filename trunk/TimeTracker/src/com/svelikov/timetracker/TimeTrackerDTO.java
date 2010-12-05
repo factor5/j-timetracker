@@ -8,20 +8,40 @@ import java.util.Date;
 import javax.swing.Timer;
 
 /**
+ * This object carries all attributes of the time tracker.
+ * 
  * @author Svilen Velikov
  */
 public class TimeTrackerDTO {
 
+	/**
+	 * The id is unique.
+	 */
 	private Integer id;
 
+	/**
+	 * The name is unique.
+	 */
 	private String timerName;
 
+	/**
+	 * A timer instance.
+	 */
 	private Timer timer;
 
+	/**
+	 * The notes for this timer.
+	 */
 	private String notes;
 
+	/**
+	 * The time that this timer have worked.
+	 */
 	private ElapsedTime elapsedTime;
 
+	/**
+	 * The date when this timer was created.
+	 */
 	private Date dateCreated;
 
 	/**
