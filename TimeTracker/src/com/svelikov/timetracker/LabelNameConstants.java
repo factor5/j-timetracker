@@ -30,6 +30,7 @@ public final class LabelNameConstants {
 	public final static String TOOLTIP_START_TIMER = "tooltip.btn.startTimer";
 	public final static String TOOLTIP_STOP_TIMER = "tooltip.btn.stopTimer";
 	public final static String TOOLTIP_DELETE_TIMER = "tooltip.btn.deleteTimer";
+	public final static String TOOLTIP_CREATE_TIMER = "tooltip.btn.createTimer";
 
 	/**
 	 * ERRORS and EXCEPTIONS messages.
