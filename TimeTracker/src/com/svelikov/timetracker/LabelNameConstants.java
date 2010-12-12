@@ -26,6 +26,8 @@ public final class LabelNameConstants {
 	public final static String MSG_NAME_TOO_LONG = "msg.nameTooLong";
 	public final static String MSG_MUST_PROVIDE_NAME = "msg.mustProvideName";
 	public final static String MSG_NAME_ALREADY_EXISTS = "msg.nameAlreadyExists";
+	public final static String TOOLTIP_BTN_CONFIGURATION = "tooltip.btn.configuration";
+	public final static String TOOLTIP_BTN_ABOUT = "tooltip.btn.about";
 	public final static String TOOLTIP_NOTES = "tooltip.btn.notes";
 	public final static String TOOLTIP_START_TIMER = "tooltip.btn.startTimer";
 	public final static String TOOLTIP_STOP_TIMER = "tooltip.btn.stopTimer";
