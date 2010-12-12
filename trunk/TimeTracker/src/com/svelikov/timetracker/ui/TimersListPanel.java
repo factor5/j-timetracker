@@ -8,6 +8,7 @@ import java.awt.Insets;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 import com.svelikov.timetracker.exception.UIInitializationException;
 import com.svelikov.timetracker.util.UIUtil;
@@ -36,28 +37,16 @@ public class TimersListPanel extends TimeTrackerExtendedPanel {
 		table.setFillsViewportHeight(true);
 		table.setFont(new Font(TABLE_FONT_FAMILY, TABLE_FONT_SIZE,
 				TABLE_FONT_SIZE));
+		table.setBackground(TABLE_BACKGROUND_COLOR);
 
-		table.getColumnModel().getColumn(2).setCellRenderer(
-				new ActionButtonRenderer());
-		table.getColumnModel().getColumn(2).setCellEditor(
-				new ActionButtonEditor());
-		table.getColumnModel().getColumn(3).setCellRenderer(
-				new ActionButtonRenderer());
-		table.getColumnModel().getColumn(3).setCellEditor(
-				new ActionButtonEditor());
-		table.getColumnModel().getColumn(4).setCellRenderer(
-				new ActionButtonRenderer());
-		table.getColumnModel().getColumn(4).setCellEditor(
-				new ActionButtonEditor());
-		table.getColumnModel().getColumn(5).setCellRenderer(
-				new ActionButtonRenderer());
-		table.getColumnModel().getColumn(5).setCellEditor(
-				new ActionButtonEditor());
+		setCellRenderersAndEditors(table.getColumnModel());
 
 		table.setRowHeight(TABLE_ROW_HEIGHT);
 		final JTableHeader header = table.getTableHeader();
 		header.setFont(new Font(TABLE_HEADER_FONT_FAMILY,
 				TABLE_HEADER_FONT_STYLE, TABLE_HEADER_FONT_SIZE));
+		header.setBackground(HEADER_BACKGROUND_COLOR);
+		header.setForeground(WHITE_COLOR);
 
 		try {
 			UIUtil.setColumnWidth(table, 0, 300);
@@ -77,6 +66,16 @@ public class TimersListPanel extends TimeTrackerExtendedPanel {
 		setBounds(2 + insets.left, 35 + insets.top, size.width, size.height);
 
 		LOG.info("Created timers list table.");
+	}
+
+	protected void setCellRenderersAndEditors(
+			final TableColumnModel tableColumnModel) {
+		final ActionButtonRenderer renderer = new ActionButtonRenderer();
+		final ActionButtonEditor editor = new ActionButtonEditor();
+		for (int i = 2; i <= 5; i++) {
+			tableColumnModel.getColumn(i).setCellRenderer(renderer);
+			tableColumnModel.getColumn(i).setCellEditor(editor);
+		}
 	}
 
 	/**

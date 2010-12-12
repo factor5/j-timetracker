@@ -3,11 +3,12 @@ package com.svelikov.timetracker.action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.svelikov.timetracker.ActionCommandConstants;
 import com.svelikov.timetracker.TimeTrackerMap;
 import com.svelikov.timetracker.ui.NewTimeTrackerInfoWindow;
+import com.svelikov.timetracker.ui.TimeTrackerWindow;
 
 /**
  * Action listener for the main window.
@@ -20,17 +21,17 @@ public class MainWindowActionListener extends BaseAction implements
 	/**
 	 * Reference to the main window.
 	 */
-	private final JFrame mainWindow;
+	private final TimeTrackerWindow mainWindow;
 
 	/**
 	 * Constructor.
 	 * 
-	 * @param frame
+	 * @param timeTrackerWindow
 	 */
-	public MainWindowActionListener(final JFrame frame,
+	public MainWindowActionListener(final TimeTrackerWindow timeTrackerWindow,
 			final TimeTrackerMap timersMap) {
 		timers = timersMap;
-		this.mainWindow = frame;
+		this.mainWindow = timeTrackerWindow;
 	}
 
 	/**
@@ -43,7 +44,24 @@ public class MainWindowActionListener extends BaseAction implements
 			final NewTimeTrackerInfoWindow infoWindow = new NewTimeTrackerInfoWindow(
 					mainWindow);
 			infoWindow.createAndShowWindow();
+		} else if (ae.getActionCommand().equals(
+				ActionCommandConstants.CONFIGURATION)) {
+			LOG.debug("Configuration button");
+		} else if (ae.getActionCommand().equals(ActionCommandConstants.ABOUT)) {
+			showAbout();
 		}
 	}
 
+	/**
+	 * Displays a window about.
+	 */
+	private void showAbout() {
+		final StringBuilder msg = new StringBuilder();
+		msg.append("                        TimeTracker application\n");
+		msg.append("                                   Version 1.0\n");
+		msg.append("                       Created by Svilen Velikov\n");
+		msg.append("    Icons are from http://www.freeiconsweb.com");
+		JOptionPane.showMessageDialog(mainWindow, msg.toString(),
+				"About TimeTracker", JOptionPane.PLAIN_MESSAGE);
+	}
 }

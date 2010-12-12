@@ -12,7 +12,6 @@ import com.svelikov.timetracker.TimeTrackerDTO;
 public class TimeCounterListener extends BaseAction implements ActionListener {
 
 	private int timerIndex;
-	private int count;
 	private TimeTrackerDTO timerDTO;
 
 	public TimeCounterListener(final int timerIndex, final TimeTrackerDTO timer) {

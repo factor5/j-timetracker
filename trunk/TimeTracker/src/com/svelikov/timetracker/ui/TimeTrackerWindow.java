@@ -55,11 +55,11 @@ public class TimeTrackerWindow extends TimeTrackerExtendedPanel {
 
 			final TimeTrackerMap timersMap = new TimeTrackerMap();
 			final MainWindowActionListener mainWindowActionListener = new MainWindowActionListener(
-					frame, timersMap);
+					this, timersMap);
 
 			// create the options interface panel
-			final OptionsPanel optionsPanel = new OptionsPanel();
-			optionsPanel.setActionListener(mainWindowActionListener);
+			final OptionsPanel optionsPanel = new OptionsPanel(
+					mainWindowActionListener);
 			add(optionsPanel);
 
 			frame.pack();
