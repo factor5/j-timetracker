@@ -28,7 +28,7 @@ public class NewTimeTrackerInfoWindow extends JFrame {
 	private JTextField timeTrackerName;
 	private JButton createTimerButton;
 	private JButton cancelButton;
-	private final JFrame mainWindow;
+	private final TimeTrackerWindow mainWindow;
 
 	/**
 	 * Constructor.
@@ -36,7 +36,7 @@ public class NewTimeTrackerInfoWindow extends JFrame {
 	 * @param tableModel
 	 * @param mainWindow
 	 */
-	public NewTimeTrackerInfoWindow(final JFrame mainWindow) {
+	public NewTimeTrackerInfoWindow(final TimeTrackerWindow mainWindow) {
 		this.bundle = UIUtil.getBundle();
 		this.mainWindow = mainWindow;
 	}

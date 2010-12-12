@@ -27,6 +27,9 @@ public class TimerActionsListener extends BaseAction implements ActionListener {
 		} else if (ae.getActionCommand().equals(
 				ActionCommandConstants.REMOVE_TIMER)) {
 			removeTimer(timerIndex);
+		} else if (ae.getActionCommand().equals(
+				ActionCommandConstants.ADD_NOTES)) {
+
 		}
 	}
 

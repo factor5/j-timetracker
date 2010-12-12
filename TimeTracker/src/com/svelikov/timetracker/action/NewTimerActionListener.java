@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import com.svelikov.timetracker.ActionCommandConstants;
@@ -19,6 +18,7 @@ import com.svelikov.timetracker.LabelNameConstants;
 import com.svelikov.timetracker.TimeTrackerDTO;
 import com.svelikov.timetracker.ui.NewTimeTrackerInfoWindow;
 import com.svelikov.timetracker.ui.TimeTrackerTableModel;
+import com.svelikov.timetracker.ui.TimeTrackerWindow;
 import com.svelikov.timetracker.util.MessageType;
 import com.svelikov.timetracker.util.UIUtil;
 
@@ -32,7 +32,7 @@ public class NewTimerActionListener extends BaseAction implements
 		ActionListener, KeyListener {
 
 	private final NewTimeTrackerInfoWindow newTimeTrackerInfoWindow;
-	private final JFrame mainWindow;
+	private final TimeTrackerWindow mainWindow;
 
 	/**
 	 * Constructor.
@@ -44,7 +44,7 @@ public class NewTimerActionListener extends BaseAction implements
 	 */
 	public NewTimerActionListener(
 			final NewTimeTrackerInfoWindow newTimeTrackerInfoWindow,
-			final JFrame mainWindow) {
+			final TimeTrackerWindow mainWindow) {
 		this.newTimeTrackerInfoWindow = newTimeTrackerInfoWindow;
 		this.mainWindow = mainWindow;
 	}
@@ -81,6 +81,7 @@ public class NewTimerActionListener extends BaseAction implements
 					MessageType.INFORMATION);
 		} else if (isValidName(tableModel, timerName)) {
 			final int timerRowId = createTimerView(timerName);
+			LOG.debug("created timer with ID:" + timerRowId);
 			storeTimer(timerName, timerRowId);
 		} else {
 			UIUtil.setWarnings(mainWindow, bundle
@@ -130,17 +131,16 @@ public class NewTimerActionListener extends BaseAction implements
 
 		final TimerActionsListener timerActionsListener = new TimerActionsListener();
 
-		newRow.add(getActionButton("img/notes-24.png", bundle
+		newRow.add(getActionButton("img/notes2-24.png", bundle
 				.getString(LabelNameConstants.TOOLTIP_NOTES),
-				ActionCommandConstants.VIEW_NOTES,
-				new NotesActionButtonListener()));
-		newRow.add(getActionButton("img/start-24.png", bundle
+				ActionCommandConstants.ADD_NOTES, timerActionsListener));
+		newRow.add(getActionButton("img/start2-24.png", bundle
 				.getString(LabelNameConstants.TOOLTIP_START_TIMER),
 				ActionCommandConstants.START_TIMER, timerActionsListener));
-		newRow.add(getActionButton("img/stop-24.png", bundle
+		newRow.add(getActionButton("img/stop2-24.png", bundle
 				.getString(LabelNameConstants.TOOLTIP_STOP_TIMER),
 				ActionCommandConstants.STOP_TIMER, timerActionsListener));
-		newRow.add(getActionButton("img/delete-24.png", bundle
+		newRow.add(getActionButton("img/delete2-24.png", bundle
 				.getString(LabelNameConstants.TOOLTIP_DELETE_TIMER),
 				ActionCommandConstants.REMOVE_TIMER, timerActionsListener));
 

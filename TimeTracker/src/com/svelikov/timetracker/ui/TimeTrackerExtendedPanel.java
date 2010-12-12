@@ -3,6 +3,7 @@
  */
 package com.svelikov.timetracker.ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ResourceBundle;
 
@@ -30,6 +31,14 @@ public class TimeTrackerExtendedPanel extends JPanel {
 	public static final int TABLE_HEADER_FONT_STYLE = Font.BOLD;
 	public static final int TABLE_HEADER_FONT_SIZE = 12;
 	public static final int TABLE_ROW_HEIGHT = 30;
+
+	public static final Color TABLE_BACKGROUND_COLOR = new Color(224, 233, 245);
+	public static final Color HEADER_BACKGROUND_COLOR = new Color(66, 130, 211);
+	public static final Color CREATE_TIMER_BUTTON_BACKGROUND_COLOR = new Color(
+			39, 77, 126);
+	public static final Color BASE_OPTIONS_PANEL_BACKGROUND_COLOR = new Color(
+			105, 151, 211);
+	public static final Color WHITE_COLOR = new Color(255, 255, 255);
 
 	/**
 	 * A bundle with labels and messages.
