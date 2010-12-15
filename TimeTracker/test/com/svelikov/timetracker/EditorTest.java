@@ -1,4 +1,4 @@
-package test;
+package com.svelikov.timetracker;
 
 import java.awt.Component;
 import java.awt.Dimension;
