@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <dataStore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="sirmenium.xsd">
+	xsi:noNamespaceSchemaLocation="dataStore.xsd">
 	
 	<timer id="1">
 		<timerName>First timer name</timerName>
