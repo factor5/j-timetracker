@@ -1,4 +1,4 @@
-package com.sve.timetracker.util;
+package com.sve.timetracker;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -6,6 +6,8 @@ import java.util.Map;
 
 import com.sve.timetracker.ElapsedTime;
 import com.sve.timetracker.TimeTrackerDTO;
+import com.sve.timetracker.util.DataStoreXMLWriter;
+import com.sve.timetracker.util.XMLWriter;
 
 public class TestWriter {
 
