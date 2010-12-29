@@ -1,4 +1,4 @@
-package com.sve.timetracker.util;
+package com.sve.timetracker;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -7,6 +7,10 @@ import java.util.Map;
 import javax.xml.stream.XMLStreamException;
 
 import com.sve.timetracker.TimeTrackerDTO;
+import com.sve.timetracker.util.DataStoreXMLWriter;
+import com.sve.timetracker.util.Reader;
+import com.sve.timetracker.util.XMLWriter;
+import com.sve.timetracker.util.XMLreader;
 
 public class TestReader {
 
