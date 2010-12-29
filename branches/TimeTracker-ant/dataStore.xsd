@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="dataStore">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="timer" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="timer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="timerName" type="xs:string" />
+				<xs:element name="notes" type="xs:string" />
+				<xs:element name="dateCreated" type="xs:string" />
+				<xs:element ref="elapsedTime" />
+			</xs:sequence>
+			<xs:attribute name="id" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="elapsedTime">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="days" type="xs:string" />
+				<xs:element name="hours" type="xs:string" />
+				<xs:element name="minutes" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
