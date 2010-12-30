@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import com.sve.timetracker.ActionCommandConstants;
-import com.sve.timetracker.TimeTrackerMap;
+import com.sve.timetracker.model.TimeTrackerMap;
 import com.sve.timetracker.ui.NewTimeTrackerInfoWindow;
 import com.sve.timetracker.ui.TimeTrackerWindow;
 

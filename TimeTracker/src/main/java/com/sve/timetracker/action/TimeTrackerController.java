@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 
 import com.sve.timetracker.ActionCommandConstants;
-import com.sve.timetracker.TimeTrackerMap;
+import com.sve.timetracker.model.TimeTrackerMap;
 import com.sve.timetracker.ui.TimeTrackerTableModel;
 import com.sve.timetracker.ui.TimeTrackerWindow;
 

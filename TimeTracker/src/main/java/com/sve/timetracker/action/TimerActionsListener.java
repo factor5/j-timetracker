@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import com.sve.timetracker.ActionCommandConstants;
-import com.sve.timetracker.TimeTrackerDTO;
+import com.sve.timetracker.model.TimeTrackerDTO;
 
 /**
  * @author Svilen Velikov

@@ -6,8 +6,8 @@ import java.util.ResourceBundle;
 import javax.swing.JFrame;
 
 import com.sve.timetracker.LabelNameConstants;
-import com.sve.timetracker.TimeTrackerMap;
 import com.sve.timetracker.action.TimeTrackerController;
+import com.sve.timetracker.model.TimeTrackerMap;
 import com.sve.timetracker.util.MessageType;
 import com.sve.timetracker.util.UIUtil;
 
