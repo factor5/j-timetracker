@@ -2,7 +2,7 @@ package com.sve.timetracker.util;
 
 import java.util.Map;
 
-import com.sve.timetracker.TimeTrackerDTO;
+import com.sve.timetracker.model.TimeTrackerDTO;
 
 /**
  * Writer interface provides implementors with writing and updating

@@ -8,7 +8,7 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
-import com.sve.timetracker.TimeTrackerDTO;
+import com.sve.timetracker.model.TimeTrackerDTO;
 
 /**
  * TimeTracker dataStore.xml writer.

@@ -10,7 +10,7 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import com.sve.timetracker.TimeTrackerDTO;
+import com.sve.timetracker.model.TimeTrackerDTO;
 
 /**
  * Time tracker data store reader. The dataStore is a xml file.
