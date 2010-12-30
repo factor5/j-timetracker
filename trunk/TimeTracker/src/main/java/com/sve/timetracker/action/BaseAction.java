@@ -7,7 +7,7 @@ import javax.swing.JTable;
 
 import org.apache.log4j.Logger;
 
-import com.sve.timetracker.TimeTrackerMap;
+import com.sve.timetracker.model.TimeTrackerMap;
 import com.sve.timetracker.ui.TimeTrackerTableModel;
 
 /**

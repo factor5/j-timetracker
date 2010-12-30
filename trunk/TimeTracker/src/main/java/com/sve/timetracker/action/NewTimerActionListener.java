@@ -13,9 +13,9 @@ import javax.swing.JButton;
 import javax.swing.Timer;
 
 import com.sve.timetracker.ActionCommandConstants;
-import com.sve.timetracker.ElapsedTime;
 import com.sve.timetracker.LabelNameConstants;
-import com.sve.timetracker.TimeTrackerDTO;
+import com.sve.timetracker.model.ElapsedTime;
+import com.sve.timetracker.model.TimeTrackerDTO;
 import com.sve.timetracker.ui.NewTimeTrackerInfoWindow;
 import com.sve.timetracker.ui.TimeTrackerTableModel;
 import com.sve.timetracker.ui.TimeTrackerWindow;
