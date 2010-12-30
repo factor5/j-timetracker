@@ -2,7 +2,7 @@ package com.sve.timetracker.util;
 
 import java.util.Map;
 
-import com.sve.timetracker.TimeTrackerDTO;
+import com.sve.timetracker.model.TimeTrackerDTO;
 
 /**
  * Reader interface provides reading functionality.
